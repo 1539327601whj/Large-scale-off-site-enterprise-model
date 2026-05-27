@@ -1,0 +1,29 @@
+# Java
+backend-java/target/
+*.class
+*.jar
+*.log
+
+# Python
+backend-python/__pycache__/
+backend-python/**/__pycache__/
+backend-python/chroma_db/
+*.pyc
+.venv/
+venv/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
