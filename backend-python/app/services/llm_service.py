@@ -7,15 +7,15 @@ async def chat_stream(message: str, context: str = "", history: list = None, sys
     messages = []
 
     # 系统提示词
-    default_system = "你是一个企业级 AI 助手，请根据提供的知识库内容回答用户问题。如果知识库中没有相关信息，请基于你的知识回答，并说明这是通用回答。"
+    default_system = "你是一个企业级 AI 助手，请根据提供的知识库内容回答用户问题。如果知识库中没有相关信息，请基于你的知识回答。注意：直接回答当前问题，不要复述或总结之前的对话内容。"
     sys = system_prompt if system_prompt else default_system
     if context:
         sys += f"\n\n以下是知识库检索到的相关内容，请优先参考：\n{context}"
     messages.append({"role": "system", "content": sys})
 
-    # 历史对话
+    # 历史对话（只保留最近 2 轮，即 4 条消息）
     if history:
-        messages.extend(history)
+        messages.extend(history[-4:])
 
     # 当前用户消息
     messages.append({"role": "user", "content": message})
